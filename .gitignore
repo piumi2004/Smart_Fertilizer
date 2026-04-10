@@ -1,21 +1,29 @@
+# Root
+node_modules/
+dist/
+.env
+.env.*
+!.env.example
+
 # Backend
-backend/dist/
 backend/node_modules/
+backend/dist/
 backend/uploads/
 backend/.env
+backend/.env.*
+!backend/.env.example
 
 # ML Service
-__pycache__/
-*.py[cod]
-*$py.class
-.venv/
-venv/
-ENV/
-.python-version
+ml_service/__pycache__/
+ml_service/.venv/
+ml_service/venv/
+ml_service/ENV/
 ml_service/data/*
 !ml_service/data/.gitkeep
 ml_service/models/*
 !ml_service/models/.gitkeep
+*.py[cod]
+*$py.class
 
 # IDEs
 .vscode/
@@ -36,3 +44,5 @@ pnpm-debug.log*
 *.jpeg
 *.png
 *.gif
+*.svg
+*.ico
