@@ -1,0 +1,52 @@
+:root {
+  --green-950: #052e1c;
+  --green-900: #0a3d26;
+  --green-800: #0f5132;
+  --green-600: #1b6e45;
+  --green-500: #2d8f5c;
+  --green-400: #4caf6a;
+  --gold-600: #b8860b;
+  --gold-500: #d4a017;
+  --gold-400: #e8b923;
+  --stone-600: #57534e;
+  --stone-500: #78716c;
+  --stone-200: #e7e5e4;
+  --white: #fafaf9;
+  --font: 'Plus Jakarta Sans', system-ui, sans-serif;
+  /* Hero display headlines */
+  --font-hero-display: 'Dosis', 'Plus Jakarta Sans', system-ui, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font);
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--stone-600);
+  background: #fff;
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  min-height: 100dvh;
+}
+
+a {
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
