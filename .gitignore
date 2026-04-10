@@ -1,11 +1,15 @@
 # Root
 node_modules/
 dist/
+.env
+.env.*
 
 # Backend
 backend/node_modules/
 backend/dist/
 backend/uploads/
+backend/.env
+backend/.env.*
 
 # ML Service
 ml_service/__pycache__/
