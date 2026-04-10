@@ -1,90 +1,150 @@
-# GoviSmart (React + Vite) + Express API
+# 🌿 Smart Fertilizer Management System
 
-## Local development (forms and `/api` need the backend)
+A comprehensive digital platform designed to modernize agricultural management, providing tools for fertilizer recommendation, machinery rental, expert consultation, and marketplace services.
 
-1. **Backend:** copy `backend/.env.example` to `backend/.env` and set `MONGODB_URI`, `JWT_SECRET`, and other values.
-2. Install dependencies: `npm install` in the project root and `npm install` in `backend/`.
-3. Start **Vite + API** together: `npm run dev:full` from the project root, then open [http://localhost:5173](http://localhost:5173).
+## 🚀 Overview
 
-Alternatively, use two terminals: `cd backend && npm run dev` (API on port 5000 by default) and `npm run dev` (Vite). The dev server proxies `/api` to the backend so auth cookies stay on the same origin as the app.
-
-If you open the built `dist/` or use a static server without a proxy, API calls return **404** unless you set `VITE_API_BASE_URL` at build time — see `.env.example`.
-
-### Still seeing “API not found (404)”?
-
-1. **Use the exact URL Vite prints** (for example `http://localhost:5177/`) — not an old tab on `http://localhost:5173` if Vite moved to another port because 5173 was busy.
-2. **Confirm the backend has the services routes:** open [http://127.0.0.1:5000/api/services/health](http://127.0.0.1:5000/api/services/health). You should see JSON like `{"ok":true,"services":true}`. If that URL returns **404** but [http://127.0.0.1:5000/health](http://127.0.0.1:5000/health) works, stop the backend (Ctrl+C) and start it again from this project’s `backend` folder (`npm run dev`) so you are not running an old process.
+The **Smart Fertilizer Management System** is a full-stack application built to empower farmers and agricultural stakeholders. It integrates machine learning for smart recommendations, a robust backend for managing complex agricultural workflows, and a modern, responsive frontend for an intuitive user experience.
 
 ---
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## ✨ Key Features
 
-Currently, two official plugins are available:
+- **🌾 Fertilizer Recommendation**: ML-powered insights for optimal crop yields.
+- **🚜 Machinery Rental**: Seamless booking system for agricultural equipment.
+- **👨‍🌾 Expert Consultation**: Connect with authorized Agricultural Officers for tailored advice.
+- **🛒 Agri-Store Marketplace**: Buy and sell agricultural products and fertilizers.
+- **🛡️ Multi-Role System**: Dedicated dashboards for **Admin**, **Seller**, and **Farmer/User**.
+- **🔔 Real-time Notifications**: Stay updated on rental status, consultation reviews, and marketplace activity.
+- **📊 Analytics Dashboard**: Comprehensive view for admins to monitor platform activity.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## 🛠️ Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Frontend
+- **Framework**: React 19 (Vite)
+- **Language**: TypeScript
+- **Routing**: React Router 7
+- **Styling**: Vanilla CSS (Modern aesthetic)
 
-## Expanding the ESLint configuration
+### Backend
+- **Runtime**: Node.js
+- **Framework**: Express.js
+- **Language**: TypeScript
+- **Database**: MongoDB (Mongoose ODM)
+- **Security**: JWT & Bcrypt Auth, Helmet.js
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Machine Learning
+- **Language**: Python
+- **Framework**: Flask/FastAPI (Placeholder for `ml_service`)
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+---
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## 🛠️ Prerequisites
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+Before you begin, ensure you have the following installed:
+- [Node.js](https://nodejs.org/) (v18+)
+- [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/)
+- [Python 3.10+](https://www.python.org/) (for ML Service)
+- [MongoDB](https://www.mongodb.com/) (Local or Atlas instance)
+
+---
+
+## 📥 Installation
+
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/piumi2004/Smart_Fertilizer.git
+   cd Smart_Fertilizer
+   ```
+
+2. **Install Root Dependencies**:
+   ```bash
+   npm install
+   ```
+
+3. **Install Backend Dependencies**:
+   ```bash
+   cd backend
+   npm install
+   cd ..
+   ```
+
+4. **Set up Environment Variables**:
+   - Create a `.env` file in the root directory based on `.env.example`.
+   - Create a `.env` file in the `backend/` directory based on `backend/.env.example`.
+
+---
+
+## 🏃 Running the Application
+
+You can run segments of the application individually or all at once.
+
+### 🏁 Full Stack (Frontend + Backend + ML)
+From the root directory:
+```bash
+npm run dev:full
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### 💻 Frontend Only
+From the root directory:
+```bash
+npm run dev
 ```
+
+### ⚙️ Backend Only
+From the root directory:
+```bash
+npm run dev --prefix backend
+```
+
+### 🤖 ML Service Only
+From the root directory:
+```bash
+npm run dev:ml
+```
+
+---
+
+## 📂 Project Structure
+
+```text
+Smart_Fertilizer/
+├── backend/                # Express + TS Backend
+│   ├── src/                # Backend Source Code
+│   │   ├── models/         # Mongoose Schemas
+│   │   ├── routes/         # API Route Definitions
+│   │   └── services/       # Business Logic
+│   └── scripts/            # Database migration scripts
+├── ml_service/             # Python Machine Learning Service
+│   ├── data/               # Dataset storage
+│   └── models/             # Trained model files
+├── src/                    # React + TS Frontend
+│   ├── components/         # Reusable UI components
+│   ├── pages/              # Application views/pages
+│   ├── context/            # Global State Management
+│   └── assets/             # Images and styles
+├── public/                 # Static assets
+└── package.json            # Root scripts and workspace config
+```
+
+---
+
+## 🔑 Environment Variables
+
+### Backend (`backend/.env`)
+- `PORT`: Port for the server (default: 5000)
+- `MONGODB_URI`: Connection string for MongoDB
+- `JWT_SECRET`: Secret key for authentication
+- `CORS_ORIGIN`: Allowed frontend origins
+
+---
+
+## 📄 License
+
+This project is licensed under the ISC License.
+
+---
+
+**Developed for Smart Agriculture Initiatives.** 🌿📖
